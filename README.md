@@ -1,6 +1,6 @@
 # AgriSmart AI
 
-A simple crop health diagnosis demo using a Flask backend and a static frontend.
+Agri Smart AI is an AI-powered farming assistant built to help farmers detect crop diseases and get smart agricultural advice.
 
 ## What it includes
 
@@ -9,6 +9,8 @@ A simple crop health diagnosis demo using a Flask backend and a static frontend.
 - `results.html` — displays diagnosis results and the uploaded photo.
 - `fronend.js` — frontend logic for backend health, uploads, and navigation.
 - `css/style.css` — page styling and responsive layout.
+- `Dockerfile` — container deployment support.
+- `.github/workflows/ci.yml` — GitHub Actions configuration for build and lint checks.
 - `requirements.txt` — Python dependencies.
 
 ## Setup
@@ -26,24 +28,20 @@ pip install -r requirements.txt
 python app.py
 ```
 
-3. Run a local frontend server from the project folder:
-
-```powershell
-python -m http.server 8000
-```
-
-4. Open the frontend in a browser:
+3. Open the app in your browser:
 
 ```text
-http://127.0.0.1:8000/index.html
+http://127.0.0.1:5000
 ```
+
+> Do not open `index.html` directly from the file system. The application must be accessed through the Flask backend server for uploads and result pages to work correctly.
 
 ## Usage
 
 - Upload a crop photo on the home page.
 - The frontend sends the image to the backend `/analyze` route.
-- The backend returns a diagnosis and an image URL.
-- `results.html` displays the results and the uploaded image.
+- The backend saves the photo and returns a diagnosis result with an image URL.
+- `results.html` displays the diagnosis and the uploaded photo.
 
 ## Deploying with Docker
 
@@ -59,13 +57,11 @@ docker build -t agrismart-ai .
 docker run -p 5000:5000 agrismart-ai
 ```
 
-4. Open the app in your browser through the backend server:
+3. Open the app in your browser:
 
 ```text
 http://127.0.0.1:5000
 ```
-
-> Do not open `index.html` directly from the file system. The app should be accessed through the Flask backend server so the upload and results flow works correctly.
 
 ## GitHub Actions (CI)
 
@@ -77,22 +73,11 @@ This repository includes a GitHub Actions workflow at `.github/workflows/ci.yml`
 - syntax-checks `app.py`
 - builds the Docker image
 
-If your repository is on GitHub, push the branch and Actions will run automatically.
+If the repo is on GitHub, push your branch and Actions will run automatically.
 
 ## Notes
 
-- The frontend uses the backend URL `http://127.0.0.1:5000`.
-- The backend allows cross-origin requests via `flask-cors`.
-- Uploaded images are saved in the `uploads/` folder.
+- The frontend uses the backend server origin for API requests.
+- Uploaded images are saved to the `uploads/` folder.
+- Docker is optional but useful for consistent deployment.
 
-## GitHub
-
-Add this repository to GitHub if you want to track it there:
-
-```powershell
-git init
-git add .
-git commit -m "Add AgriSmart AI backend and frontend"
-```
-
-Then create a remote repository and push your code.

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriSmart AI - रिजल्ट</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <i class="fas fa-leaf"></i>
+        <div>
+          <h2>AgriSmart</h2>
+          <p>AI Kisan Advisor</p>
+        </div>
+      </div>
+      <div class="location">Lucknow, UP</div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="hero">
+      <h1>विश्लेषण परिणाम</h1>
+      <p>आपकी फ़सल का रोग पहचान लिया गया है। नीचे दी गई सलाह से आप जल्दी सुधार शुरू कर सकते हैं।</p>
+    </div>
+
+    <div class="tab-content result-card">
+      <div class="result-grid">
+        <div class="result-summary">
+          <div class="status-pill status-success"><i class="fas fa-check-circle"></i> Backend connected</div>
+          <h2>रोग और फसल विवरण</h2>
+          <p><strong>फसल:</strong> <span id="crop">-</span></p>
+          <p><strong>रोग:</strong> <span id="disease">-</span></p>
+          <p><strong>विश्वसनीयता:</strong> <span id="confidence">-</span></p>
+        </div>
+
+        <div class="result-image">
+          <div class="image-card result-image-card">
+            <img id="result-image" src="assets/diagnosis.svg" alt="Uploaded image or diagnosis illustration">
+            <p id="result-image-label">अपलोड की गई फ़ोटो</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="advice-box">
+        <h3>AI सलाह</h3>
+        <p id="advice">-</p>
+      </div>
+
+      <a class="btn btn-primary" href="index.html">वापस जाएँ और फिर से परीक्षण करें</a>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    document.getElementById('crop').textContent = params.get('crop') || 'Unknown';
+    document.getElementById('disease').textContent = params.get('disease') || 'Unknown';
+    document.getElementById('confidence').textContent = params.get('confidence') || 'N/A';
+
+    const advice = params.get('advice');
+    document.getElementById('advice').textContent = advice
+      ? decodeURIComponent(advice)
+      : 'कोई सलाह उपलब्ध नहीं है।';
+
+    const imageUrl = params.get('imageUrl');
+    const resultImage = document.getElementById('result-image');
+    const imageLabel = document.getElementById('result-image-label');
+
+    if (imageUrl && resultImage) {
+      resultImage.src = decodeURIComponent(imageUrl);
+      resultImage.alt = 'Uploaded crop photo';
+      if (imageLabel) imageLabel.textContent = 'अपलोड की गई फ़ोटो';
+    } else if (resultImage) {
+      resultImage.src = 'assets/diagnosis.svg';
+      resultImage.alt = 'Diagnosis illustration';
+      if (imageLabel) imageLabel.textContent = 'AI निदान चित्र';
+    }
+  </script>
+</body>
+</html>

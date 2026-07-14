@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Crop inspection illustration</title>
+  <desc id="desc">A stylized farm scene with a healthy crop, sun, and a mobile phone.</desc>
+  <rect width="640" height="360" rx="28" fill="#e8f7e8"/>
+  <circle cx="520" cy="72" r="36" fill="#fde68a"/>
+  <rect x="64" y="220" width="512" height="92" rx="32" fill="#bbf7d0"/>
+  <path d="M104 200C144 160 196 160 232 200C272 244 320 244 360 200C396 164 446 160 484 196" fill="none" stroke="#166534" stroke-width="18" stroke-linecap="round"/>
+  <rect x="196" y="104" width="110" height="146" rx="22" fill="#1f2937"/>
+  <rect x="214" y="126" width="74" height="84" rx="12" fill="#4ade80"/>
+  <circle cx="248" cy="188" r="14" fill="#fef3c7"/>
+  <path d="M230 116h36" stroke="#fef3c7" stroke-width="8" stroke-linecap="round"/>
+  <path d="M350 142h120" stroke="#16a34a" stroke-width="10" stroke-linecap="round"/>
+  <path d="M350 178h96" stroke="#22c55e" stroke-width="10" stroke-linecap="round"/>
+  <path d="M232 252h180" stroke="#166534" stroke-width="8" stroke-linecap="round"/>
+  <path d="M244 280h160" stroke="#166534" stroke-width="8" stroke-linecap="round"/>
+</svg>

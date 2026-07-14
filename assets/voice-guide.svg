@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Voice advisor illustration</title>
+  <desc id="desc">A microphone and speech bubble representing voice-based guidance.</desc>
+  <rect width="640" height="360" rx="28" fill="#eef2ff"/>
+  <circle cx="120" cy="72" r="30" fill="#c7d2fe"/>
+  <rect x="154" y="100" width="320" height="116" rx="32" fill="#ffffff" stroke="#cbd5e1"/>
+  <path d="M286 146c20-24 48-24 68 0" fill="none" stroke="#4f46e5" stroke-width="10" stroke-linecap="round"/>
+  <path d="M278 166c18-14 42-14 60 0" fill="none" stroke="#4f46e5" stroke-width="10" stroke-linecap="round"/>
+  <rect x="240" y="186" width="144" height="54" rx="27" fill="#4f46e5"/>
+  <path d="M214 174h58" stroke="#4f46e5" stroke-width="12" stroke-linecap="round"/>
+  <path d="M214 202h50" stroke="#4f46e5" stroke-width="12" stroke-linecap="round"/>
+  <rect x="180" y="248" width="272" height="40" rx="20" fill="#dbeafe"/>
+  <circle cx="484" cy="262" r="40" fill="#86efac"/>
+  <path d="M484 244v36M468 260h32" stroke="#166534" stroke-width="8" stroke-linecap="round"/>
+</svg>

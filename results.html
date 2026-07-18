@@ -3,43 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AgriSmart AI के विश्लेषण परिणाम देखें और फ़सल रोग की AI सलाह पढ़ें।">
+  <meta name="theme-color" content="#15803d">
   <title>AgriSmart AI - रिजल्ट</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <nav class="navbar">
+  <a class="skip-link" href="#main-content">मुख्य सामग्री पर जाएँ</a>
+  <nav class="navbar" aria-label="Primary navigation">
     <div class="nav-container">
-      <div class="logo">
+      <a class="logo" href="index.html" aria-label="AgriSmart AI होम">
         <i class="fas fa-leaf"></i>
         <div>
           <h2>AgriSmart</h2>
           <p>AI Kisan Advisor</p>
         </div>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="index.html#upload-section">Upload</a>
+        <a class="nav-link" href="index.html#voice-section">Voice</a>
+        <a class="nav-link active" href="results.html">Results</a>
       </div>
-      <div class="location">Lucknow, UP</div>
+      <div class="location" aria-label="Current location">Lucknow, UP</div>
     </div>
   </nav>
 
-  <div class="container">
-    <div class="hero">
-      <h1>विश्लेषण परिणाम</h1>
+  <main id="main-content" class="container">
+    <section class="hero" aria-labelledby="result-heading">
+      <h1 id="result-heading">विश्लेषण परिणाम</h1>
       <p>आपकी फ़सल का रोग पहचान लिया गया है। नीचे दी गई सलाह से आप जल्दी सुधार शुरू कर सकते हैं।</p>
-    </div>
+    </section>
 
-    <div class="tab-content result-card">
+    <section class="tab-content result-card" aria-label="Analysis results">
       <div class="result-grid">
-        <div class="result-summary">
-          <div class="status-pill status-success"><i class="fas fa-check-circle"></i> Backend connected</div>
+        <article class="result-summary">
+          <div class="status-pill"><i class="fas fa-check-circle" aria-hidden="true"></i> Backend connected</div>
           <h2>रोग और फसल विवरण</h2>
           <p><strong>फसल:</strong> <span id="crop">-</span></p>
           <p><strong>रोग:</strong> <span id="disease">-</span></p>
           <p><strong>विश्वसनीयता:</strong> <span id="confidence">-</span></p>
-        </div>
+        </article>
 
         <div class="result-image">
           <div class="image-card result-image-card">
-            <img id="result-image" src="assets/diagnosis.svg" alt="Uploaded image or diagnosis illustration">
+            <img id="result-image" src="assets/diagnosis.svg" alt="Uploaded image or diagnosis illustration" loading="lazy" decoding="async">
             <p id="result-image-label">अपलोड की गई फ़ोटो</p>
           </div>
         </div>
@@ -51,8 +63,12 @@
       </div>
 
       <a class="btn btn-primary" href="index.html">वापस जाएँ और फिर से परीक्षण करें</a>
-    </div>
-  </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 AgriSmart AI · Built for smart crop diagnosis</p>
+  </footer>
 
   <script>
     const params = new URLSearchParams(window.location.search);
@@ -80,5 +96,6 @@
       if (imageLabel) imageLabel.textContent = 'AI निदान चित्र';
     }
   </script>
+  <script src="fronend.js"></script>
 </body>
 </html>

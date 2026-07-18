@@ -3,15 +3,38 @@ const BACKEND_BASE = window.location.protocol.startsWith('http')
   : 'http://127.0.0.1:5000';
 const statusEl = document.getElementById('backend-status');
 const uploadButton = document.getElementById('upload-btn');
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+const fileInput = document.getElementById('image-upload');
+const previewCard = document.getElementById('preview-card');
+const previewImg = document.getElementById('preview-img');
+const previewText = document.getElementById('preview-text');
+const recordBtn = document.getElementById('record-btn');
+const voiceStatus = document.getElementById('voice-status');
 
 function showTab(index) {
   const tabs = document.querySelectorAll('.tab-btn');
   const contents = document.querySelectorAll('.tab-content');
 
-  tabs.forEach((tab, i) => tab.classList.toggle('active', i === index));
-  contents.forEach((content, i) => {
-    content.style.display = i === index ? 'block' : 'none';
+  tabs.forEach((tab, i) => {
+    const isActive = i === index;
+    tab.classList.toggle('active', isActive);
+    tab.setAttribute('aria-selected', String(isActive));
   });
+
+  contents.forEach((content, i) => {
+    const isActive = i === index;
+    content.hidden = !isActive;
+    if (isActive) {
+      content.removeAttribute('hidden');
+    }
+  });
+}
+
+function setMenuOpen(isOpen) {
+  if (!navLinks || !menuToggle) return;
+  navLinks.classList.toggle('open', isOpen);
+  menuToggle.setAttribute('aria-expanded', String(isOpen));
 }
 
 async function updateBackendStatus() {
@@ -32,8 +55,7 @@ async function updateBackendStatus() {
 }
 
 async function uploadImage() {
-  const fileInput = document.getElementById('image-upload');
-  const file = fileInput.files[0];
+  const file = fileInput && fileInput.files[0];
 
   if (!file) {
     alert('कृपया फोटो चुनें');
@@ -74,11 +96,6 @@ async function uploadImage() {
   }
 }
 
-const fileInput = document.getElementById('image-upload');
-const previewCard = document.getElementById('preview-card');
-const previewImg = document.getElementById('preview-img');
-const previewText = document.getElementById('preview-text');
-
 function showPreview(file) {
   if (!previewCard || !previewImg || !previewText) return;
   previewImg.src = URL.createObjectURL(file);
@@ -106,8 +123,26 @@ if (fileInput) {
   });
 }
 
-const recordBtn = document.getElementById('record-btn');
-const voiceStatus = document.getElementById('voice-status');
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.contains('open');
+    setMenuOpen(!isOpen);
+  });
+
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 767) {
+        setMenuOpen(false);
+      }
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 767) {
+      setMenuOpen(false);
+    }
+  });
+}
 
 if (recordBtn && voiceStatus) {
   let isRecording = false;
@@ -134,4 +169,5 @@ if (recordBtn && voiceStatus) {
 window.addEventListener('DOMContentLoaded', () => {
   showTab(0);
   updateBackendStatus();
+  setMenuOpen(false);
 });

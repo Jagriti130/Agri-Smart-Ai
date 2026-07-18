@@ -3,68 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AgriSmart AI एक AI-आधारित कृषि सहायक है जो फसल की फोटो से रोग पहचान और उपयोगी सलाह देता है।">
+  <meta name="theme-color" content="#15803d">
+  <meta property="og:title" content="AgriSmart AI">
+  <meta property="og:description" content="फसल की फोटो अपलोड करें और तुरंत AI से रोग पहचान और कृषि सलाह पाएं।">
   <title>AgriSmart AI</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <nav class="navbar">
+  <a class="skip-link" href="#main-content">मुख्य सामग्री पर जाएँ</a>
+  <nav class="navbar" aria-label="Primary navigation">
     <div class="nav-container">
-      <div class="logo">
+      <a class="logo" href="index.html" aria-label="AgriSmart AI होम">
         <i class="fas fa-leaf"></i>
         <div>
           <h2>AgriSmart</h2>
           <p>AI Kisan Advisor</p>
-        </div>             
+        </div>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link active" href="index.html">Home</a>
+        <a class="nav-link" href="#upload-section">Upload</a>
+        <a class="nav-link" href="#voice-section">Voice</a>
+        <a class="nav-link" href="results.html">Results</a>
       </div>
-      <div class="location">Lucknow, UP</div>
+      <div class="location" aria-label="Current location">Lucknow, UP</div>
     </div>
   </nav>
 
-  <div class="container">
-    <div class="hero">
+  <main id="main-content" class="container">
+    <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-grid">
         <div>
           <span class="eyebrow">AI किसान साथी</span>
-          <h1>AgriSmart AI</h1>
+          <h1 id="hero-heading">AgriSmart AI</h1>
           <p>फसल की फोटो अपलोड करें या अपनी समस्या हिंदी में सुनाएँ। हम तुरंत रोग पहचान और उपयोगी कृषि सलाह प्रदान करते हैं।</p>
           <div class="hero-actions">
-            <button class="btn btn-primary" onclick="showTab(0)">फोटो अपलोड करें</button>
-            <button class="btn btn-secondary" onclick="showTab(1)">आवाज़ से बताएं</button>
+            <button class="btn btn-primary" type="button" onclick="showTab(0)">फोटो अपलोड करें</button>
+            <button class="btn btn-secondary" type="button" onclick="showTab(1)">आवाज़ से बताएं</button>
           </div>
-          <div id="backend-status" class="backend-status">Backend status: जांच की जा रही है...</div>
         </div>
         <div class="hero-image">
-          <img src="assets/crop-check.svg" alt="Illustration of an AI crop inspection app">
+          <img src="assets/crop-check.svg" alt="Illustration of an AI crop inspection app" loading="eager" decoding="async">
         </div>
-      </div>
-    </div>
-
-    <section class="image-showcase" aria-label="App feature images">
-      <div class="image-card">
-        <img src="assets/crop-check.svg" alt="Illustration of checking crop health with a phone">
-        <p>फसल की स्थिति को त्वरित रूप से देखें</p>
-      </div>
-      <div class="image-card">
-        <img src="assets/voice-guide.svg" alt="Illustration of voice-based crop guidance">
-        <p>आवाज में समस्या बताकर सलाह लें</p>
-      </div>
-      <div class="image-card">
-        <img src="assets/diagnosis.svg" alt="Illustration of AI diagnosis results">
-        <p>AI आधारित निदान और सुझाव</p>
       </div>
     </section>
 
-    <div class="tabs">
-      <button class="tab-btn active" onclick="showTab(0)">📸 फसल की फोटो</button>
-      <button class="tab-btn" onclick="showTab(1)">🎤 आवाज में बताएं</button>
+    <section class="image-showcase" aria-label="App feature images">
+      <article class="image-card">
+        <img src="assets/crop-check.svg" alt="Illustration of checking crop health with a phone" loading="lazy" decoding="async">
+        <p>फसल की स्थिति को त्वरित रूप से देखें</p>
+      </article>
+      <article class="image-card">
+        <img src="assets/voice-guide.svg" alt="Illustration of voice-based crop guidance" loading="lazy" decoding="async">
+        <p>आवाज में समस्या बताकर सलाह लें</p>
+      </article>
+      <article class="image-card">
+        <img src="assets/diagnosis.svg" alt="Illustration of AI diagnosis results" loading="lazy" decoding="async">
+        <p>AI आधारित निदान और सुझाव</p>
+      </article>
+    </section>
+
+    <div class="tabs" role="tablist" aria-label="Upload or voice interface">
+      <button class="tab-btn active" type="button" role="tab" aria-selected="true" aria-controls="photo-tab" onclick="showTab(0)">📸 फसल की फोटो</button>
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="voice-tab" onclick="showTab(1)">🎤 आवाज में बताएं</button>
     </div>
 
-    <!-- Photo Tab -->
-    <div id="photo-tab" class="tab-content">
-      <div class="upload-box">
+    <section id="photo-tab" class="tab-content" role="tabpanel" aria-labelledby="photo-tab-button">
+      <div class="upload-box" id="upload-section">
         <div class="section-illustration">
-          <img src="assets/upload-photo.svg" alt="Illustration of uploading a crop photo">
+          <img src="assets/upload-photo.svg" alt="Illustration of uploading a crop photo" loading="lazy" decoding="async">
         </div>
         <form id="upload-form" enctype="multipart/form-data">
           <input type="file" id="image-upload" accept="image/*" hidden>
@@ -72,28 +84,31 @@
             <img id="preview-img" alt="Selected photo preview">
             <div id="preview-text"></div>
           </div>
-          <div class="upload-area" onclick="document.getElementById('image-upload').click()">
-            <i class="fas fa-camera fa-3x"></i>
+          <div class="upload-area" onclick="document.getElementById('image-upload').click()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); document.getElementById('image-upload').click();}">
+            <i class="fas fa-camera fa-3x" aria-hidden="true"></i>
             <p>फसल या पत्ते की फोटो अपलोड करें</p>
             <button id="upload-btn" type="button" class="btn btn-primary" onclick="uploadImage()">फोटो अपलोड करें</button>
           </div>
         </form>
       </div>
-    </div>
+    </section>
 
-    <!-- Voice Tab -->
-    <div id="voice-tab" class="tab-content" style="display: none;">
-      <div class="voice-box">
+    <section id="voice-tab" class="tab-content" role="tabpanel" aria-labelledby="voice-tab-button" hidden>
+      <div class="voice-box" id="voice-section">
         <div class="section-illustration">
-          <img src="assets/voice-guide.svg" alt="Illustration of a voice assistant guiding crop diagnosis">
+          <img src="assets/voice-guide.svg" alt="Illustration of a voice assistant guiding crop diagnosis" loading="lazy" decoding="async">
         </div>
-        <button id="record-btn" class="record-btn">
-          <i class="fas fa-microphone"></i>
+        <button id="record-btn" class="record-btn" type="button" aria-label="Record voice note">
+          <i class="fas fa-microphone" aria-hidden="true"></i>
         </button>
         <p id="voice-status">अपनी समस्या बताएं (हिंदी में बोलें)</p>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 AgriSmart AI · Built for smart crop diagnosis</p>
+  </footer>
 
   <script src="fronend.js"></script>
 </body>

@@ -75,6 +75,16 @@ This repository includes a GitHub Actions workflow at `.github/workflows/ci.yml`
 
 If the repo is on GitHub, push your branch and Actions will run automatically.
 
+## GitHub Pages deployment
+
+The repository also includes a Pages workflow at `.github/workflows/deploy-pages.yml` that publishes the static front end from the repository root. Once the workflow runs on the `main` branch, the site is available at:
+
+```text
+https://<your-github-username>.github.io/Agri-Smart-Ai/
+```
+
+If you want the site to use a custom domain, add a `CNAME` file in the repository root with your domain name.
+
 ## Notes
 
 - The frontend uses the backend server origin for API requests.
